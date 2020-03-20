@@ -1,0 +1,143 @@
+.container {
+  margin: 14px;
+  width: 100%;
+  display: absolute;
+}
+.cell-r {
+  width: 100%;
+  height: 35px;
+  font-size: 14px;
+  line-height: 1.42857;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #FFF;
+  color: #000;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+}
+.porcent-r {
+  width: 48%;
+  margin-bottom: 15px;
+  margin-right: 4%;
+}
+.porcent-r2 {
+  width: 48%;
+  margin-bottom: 15px;
+}
+@media (max-width: 450px) {
+  .porcent-r {
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 6%;
+  }
+  .porcent-r2 {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+::placeholder {
+  color: #a1b4c4;
+  opacity: 1;
+}
+.ul-size2 {
+  font-size: 18px;
+  text-align: justify;
+  color: #000;
+}
+@media (max-width: 450px) {
+  .ul-size2 {
+    font-size: 14px;
+    text-align: justify;
+    width: 100%;
+  }
+}
+.form-group-r {
+  margin-bottom: 15px;
+}
+.form-control-r {
+  width: 100%;
+  height: 35px;
+  font-size: 14px;
+  line-height: 1.42857;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #000;
+  background: #FFF;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+}
+.card-container-r2 {
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 450px) {
+  .card-container-r2 {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.boton-color-r {
+  padding: 1.2em 3em;
+  background: #12cffe;
+  text-decoration: none;
+  letter-spacing: 0.3em;
+  margin: 0 auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  width: 216px;
+  color: #FFF;
+  border-radius: 5px;
+  cursor: url(https://firebasestorage.googleapis.com/v0/b/hacksite-9161c.appspot.com/o/wd_middle-finger-cursor_ncsa.cur?alt=media&token=e2a1da2a-6a53-42f6-a5d3-22cf215c876a), pointer;
+}
+.back-title {
+  background-color: #cfcfcf;
+  padding: 7px 15px;
+}
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.row2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.text {
+  width: 50%;
+}
+.text2 {
+  width: 60%;
+}
+.title-r {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.size {
+  font-size: 18px;
+}
+.presentation-cta {
+  display: flex;
+  justify-content: center;
+}
+.boton-color2 {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+  cursor: pointer;
+  padding: .375rem .75rem;
+  font-size: 18px;
+}
+.alert {
+  background-color: rgb(255,0,0);
+  opacity: 0.7;
+  height: 50px;
+  width: auto;
+  color: white;
+  z-index: 50;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  margin-top: 20px;
+}

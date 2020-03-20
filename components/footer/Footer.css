@@ -1,0 +1,10 @@
+.footer-container {
+  background: #092432;
+  height: 200px;
+}
+.legal {
+  color: #000;
+  padding: 1.1em 0;
+  justify-content: center;
+  display: flex;
+}
