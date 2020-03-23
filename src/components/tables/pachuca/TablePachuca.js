@@ -51,7 +51,7 @@ class TablePachuca extends Component {
               <div className="data-table">{agendaCita.placas}</div>
               <div className="data-table">{agendaCita.modelo}</div>
               <div className="data-table">{agendaCita.color}</div>
-              <div className="data-table">{agendaCita.hora} - {agendaCita.fecha}</div>
+              <div className="data-table">{agendaCita.fecha} / {agendaCita.hora}</div>
               <div className="data-table">
                 {agendaCita.status}
                 <button style={{background: 'grey', color: 'white'}} borrar={this.borrar}>Atendido</button>
