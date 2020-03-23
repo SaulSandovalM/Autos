@@ -38,9 +38,9 @@ class TablePachuca extends Component {
         <h1>Citas</h1>
           <div className="products-al">
             <div className="col-table">Nombre</div>
-            <div className="col-table">Correo</div>
-            <div className="col-table">RFC</div>
-            <div className="col-table">Municipio</div>
+            <div className="col-table">Placas</div>
+            <div className="col-table">Modelo</div>
+            <div className="col-table">Color</div>
             <div className="col-table">Fecha/Hora</div>
             <div className="col-table">Estatus</div>
           </div>
@@ -48,9 +48,9 @@ class TablePachuca extends Component {
           this.state.agendaCita.map(agendaCita => (
             <div className="products-al">
               <div className="data-table">{agendaCita.nombre} {agendaCita.apellidop} {agendaCita.apellidom}</div>
-              <div className="data-table">{agendaCita.email}</div>
-              <div className="data-table">{agendaCita.rfc}</div>
-              <div className="data-table">{agendaCita.municipio}</div>
+              <div className="data-table">{agendaCita.placas}</div>
+              <div className="data-table">{agendaCita.modelo}</div>
+              <div className="data-table">{agendaCita.color}</div>
               <div className="data-table">{agendaCita.hora} - {agendaCita.fecha}</div>
               <div className="data-table">
                 {agendaCita.status}
