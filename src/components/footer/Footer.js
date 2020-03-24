@@ -9,7 +9,6 @@ class Footer extends Component {
     return (
       <div className="footer-container">
         <div className="legal">
-          Copyright © 2018 Cilper. Todos los derechos reservados.
         </div>
       </div>
     );

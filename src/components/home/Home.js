@@ -98,52 +98,66 @@ class Home extends Component {
           </div>}
         </div>
         <div style={{width: '65%'}}>
-          {/*<h1 className="back-title">Expedición de Constancia de NO Antecedentes Penales</h1>
+          <h1 className="back-title">Constancia de Vehículo no Robado</h1>
           <div className="row">
             <div className="text">
-              <h5 className="title-r">Requisitos</h5>
+              <p>Para evitar la compra-venta de <b>vehículos robados</b> o con alteraciones en sus números de identificación.</p>
+              <h5 className="title-r">Vehículo Nacional</h5>
               <p className="size">
-                Si Usted Radica en México.
+                <b>Requisitos</b>
                 <br></br><br></br>
-                1.- Recibo de pago (formato F-7)
+                1.- Indispensable presentar el vehículo.
                 <br></br>
-                2.- Una Copia de constancia de la  Clave Única de Registro de Población (CURP) actualizada (código QR)
+                2.- Factura original, endosada o en defecto contrato de compra-venta o carta responsiva.
                 <br></br>
-                3.- Una Copia de Identificación Oficial (INE)
+                3.- Tarjeta de circulación o baja de placas.
                 <br></br>
-                4.- Una Fotografía a color tamaño pasaporte fondo blanco.
+                4.- Identificación oficial.
+                <br></br>
+                5.- CURP.
                 <br></br><br></br>
-                Si Usted radica en el Extranjero
-                <br></br><br></br>
-                1. Oficio del consulado dirigido a la  Procuraduría General de Justicia del Estado de Hidalgo
-                <br></br>
-                2. Toma de Huellas por el Consulado
-                <br></br>
-                3. Copia de identificación oficial (INE, Cartilla, Pasaporte o Matricula)
-                <br></br>
-                4. Una Copia de constancia de la  Clave Única de Registro de Población (CURP) actualizada (código QR)
-                <br></br>
-                5. 2 fotografías tamaño credencial a color de frente
-                <br></br>
-                6. Comprobante de Domicilio donde radica el interesado
-                <br></br>
-                7. Carta poder
-                <br></br>
-                8. Credencial original y copia de la persona que realiza el tramite
-                <br></br>
-                9. Recibo de pago (formato F-7) <a href="https://ruts.hidalgo.gob.mx/tramite/572">Desacargar formato de pago</a>
+                * Deberás presentar copia de los docuemntos antes mencionados.
+                </p>
+                <h5 className="title-r">Vehículo Extranjero</h5>
+                <p className="size">
+                  <b>Requisitos</b>
+                  <br></br><br></br>
+                  1.- Indispensable presentar el vehículo.
+                  <br></br>
+                  2.- Titulo de propiedad y/o Certificado de propiedad debidamente endosado.
+                  <br></br>
+                  3.- Tarjeta de circulación.
+                  <br></br>
+                  4.- Pedimento de Importacióon y/o Constancia de Inscripción.
+                  <br></br>
+                  5.- Credencial de elector.
+                  <br></br>
+                  4.- CURP.
+                  <br></br>
+                  * Deberás presentar copia de los docuemntos antes mencionados.
               </p>
             </div>
-            <div className="text">
+            <div className="text" style={{paddingLeft: '50px'}}>
               <h5 className="title-r">Ubicación</h5>
-              <p>Servicios Periciales</p>
-              <a href="https://www.google.com.mx/maps/place/Servicios+Periciales/@20.0645574,-98.7844438,18z/data=!4m5!3m4!1s0x0:0x3c9746ad18bdeb6d!8m2!3d20.065287!4d-98.7853584">Abrir ubicación Google Maps</a>
-              <p>Servicios Periciales</p>
-              <a href="https://www.google.com.mx/maps/place/Agencia+del+Ministerio+Publico/@21.1496548,-98.4171,18z/data=!4m8!1m2!2m1!1sAgencia+de+Ministerio+P%C3%BAblico!3m4!1s0x85d727a12b89e037:0xb4b27e217d3f0a5e!8m2!3d21.1495294!4d-98.4171117">Abrir ubicación Google Maps</a>
-              <h5 className="title-r">Informes</h5>
-              <p>Para mas informacion favor de llamar al numero: <br></br>+52 (771) 71 79000 Ext. 9217</p>
+              <p>Coordinación de Investigación y Recuperación de Vehiculos Robados</p>
+              <p>Carretera México Pachuca km 84.5, Residencial Spauah, 42083 Pachuca de Soto, Hgo</p>
+              <a href="https://www.google.com.mx/maps/place/Coordinaci%C3%B3n+de+Investigaci%C3%B3n+y+Recuperaci%C3%B3n+de+Veh%C3%ADculos+Robados/@20.064891,-98.784787,18.5z/data=!4m5!3m4!1s0x85d1a0fd90dbd9df:0xcf5d49e41985ff46!8m2!3d20.0654064!4d-98.7847576">Abrir ubicación Google Maps</a>
+              <br></br><br></br>
+              <h5 className="title-r">Contactate con nosotros</h5>
+              <p>Para mas informacion favor de llamar al numero:
+                <br></br>01 (771) 710 8813
+                <br></br>01 (771) 710 8796
+              </p>
+              <div >
+                <h5 className="title-r">Horario</h5>
+                <p>lunes a viernes | 9 a 14 horas</p>
+                <br></br><br></br>
+                <h5 className="title-r">Costo de la constancia</h5>
+                <p style={{fontSize: '20px'}}><b>$339.00 M.N.</b>
+                </p>
+              </div>
             </div>
-          </div>*/}
+          </div>
 
           <div style={{width: '100%', marginBottom: '100px'}}>
             <h1 className="back-title">Agenda tu Cita</h1>
@@ -325,13 +339,12 @@ class Home extends Component {
                       </div>
                       <div className="column-t">
                         <p className="name-size">Ubicación</p>
-                        <p className="name-size2">{this.state.marca}</p>
+                        <p className="name-size2">Coordinación de Investigación de vehiculos</p>
                       </div>
                       <div className="column-t">
                         <p className="name-size">Observaciones</p>
                         <p className="name-size3">
-                          Le recordamos que en el caso de pagar en BBVA y Santander el pago tardara en
-                          reflejarse en un tiempo de 48 horas aproximadamente.
+                          Le recordamos que es obligatorio que se presente el propietario del vehículo.
                         </p>
                       </div>
                     </div>
@@ -342,7 +355,6 @@ class Home extends Component {
           </div>
         </div>
         <div>
-
       </div>
       </div>
     );
