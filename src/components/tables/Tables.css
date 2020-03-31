@@ -88,3 +88,79 @@ body > .print-source {
 .hidden {
   visibility: hidden;
 }
+.options-sede {
+  height: 100vh;
+  width: 100%;
+}
+.row-options {
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  height: 70%;
+}
+.pachuca {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 1;
+  transition: all 1.6s ease;
+  transform: scale(1.0);
+}
+.huejutla {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+  text-decoration: none;
+  transition: all 1.6s ease;
+  transform: scale(1.0);
+}
+.background-service-1 {
+  background: url('https://firebasestorage.googleapis.com/v0/b/citas-f171e.appspot.com/o/5e7a4b7282a70_1585073088_5e7a4b7282a0e%20(3).png?alt=media&token=e06fb777-8cb8-4a6c-bae9-06c6f1726149');
+  height: 100%;
+  left: 0;
+  background-position: center;
+  top: 0;
+  width: 43%;
+  background-size: cover;
+}
+.huejutla:hover{
+  -webkit-transform: scale(1.04);
+  background: url('https://www.elindependientedehidalgo.com.mx/wp-content/uploads/2018/03/Nombran-a-Huejutla-Pueblo-con-Sabor_2.jpg');
+  color: black;
+  z-index: 1;
+}
+.pachuca:hover{
+  -webkit-transform: scale(1.04);
+  background: url('https://www.ywampachuca.org/images/3.jpg?crc=19523570');
+  color: white;
+  z-index: 1;
+}
+.background-service-2 {
+  background: url('https://firebasestorage.googleapis.com/v0/b/citas-f171e.appspot.com/o/5e7a4b7282a70_1585073088_5e7a4b7282a0e%20(2).png?alt=media&token=5f9e7e8b-34bd-42e1-9019-60b0457be816');
+  height: 100%;
+  left: 0;
+  background-position: center;
+  top: 0;
+  width: 43%;
+  background-size: cover;
+}
+.text-pt {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 50px;
+}
+.text-ht {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 50px;
+}
