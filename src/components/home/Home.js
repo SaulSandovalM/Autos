@@ -390,13 +390,12 @@ class Home extends Component {
                       </div>
                       <div className="column-t">
                         <p className="name-size">Ubicación</p>
-                        <p className="name-size2">{this.state.marca}</p>
+                        <p className="name-size2">Coordinación de Investigación de vehiculos</p>
                       </div>
                       <div className="column-t">
                         <p className="name-size">Observaciones</p>
                         <p className="name-size3">
-                          Le recordamos que en el caso de pagar en BBVA y Santander el pago tardara en
-                          reflejarse en un tiempo de 48 horas aproximadamente.
+                          Le recordamos que es obligatorio que se presente el propietario del vehículo.
                         </p>
                       </div>
                     </div>
@@ -407,7 +406,6 @@ class Home extends Component {
           </div>
         </div>
         <div>
-
       </div>
       </div>
     );
