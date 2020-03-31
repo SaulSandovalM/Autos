@@ -23,7 +23,7 @@
   width: 48%;
   margin-bottom: 15px;
 }
-@media (max-width: 450px) {
+@media (max-width: 768px) {
   .porcent-r {
     width: 100%;
     margin-bottom: 15px;
@@ -68,7 +68,7 @@
   display: flex;
   flex-direction: row;
 }
-@media (max-width: 450px) {
+@media (max-width: 768px) {
   .card-container-r2 {
     display: flex;
     flex-direction: column;
@@ -97,6 +97,13 @@
   display: flex;
   flex-direction: row;
 }
+@media (max-width: 768px) {
+  .row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
 .row2 {
   width: 100%;
   display: flex;
@@ -106,14 +113,30 @@
 .text {
   width: 50%;
 }
+.text2-res {
+  width: 50%;
+  padding-left: 50px;
+}
+@media (max-width: 768px) {
+  .text {
+    width: 100%;
+  }
+  .text2-res {
+    width: 100%;
+    padding-left: 0px;
+  }
+}
 .text2 {
   width: 60%;
+}
+@media (max-width: 768px) {
+  .text2 {
+    width: 100%;
+  }
 }
 .title-r {
   font-weight: bold;
   font-size: 1.25rem;
-  margin-bottom: 15px;
-  margin-top: 5px;
 }
 .size {
   font-size: 18px;

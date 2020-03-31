@@ -3,8 +3,6 @@ import './Home.css';
 import firebaseConf from '../../Firebase';
 import ReactToPrint from 'react-to-print';
 
-const now = new Date();
-
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -92,16 +90,98 @@ class Home extends Component {
     };
   }
 
-  componentWillMount () {
-    firebaseConf.database().ref('agenda-cita').on('child_added', snapshot => {
-      this.setState({
-        agendaCita: this.state.agendaCita.concat(snapshot.val())
-      });
-    });
-  }
-
-
   render() {
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    if ( dd < 10 ){
+      dd = '0' + dd
+    }
+    if ( mm < 10 ){
+      mm = '0' + mm
+    }
+    today = yyyy + '-' + mm + '-' + dd;
+
+    const fecha = this.state.fecha;
+
+    var d = new Date();
+    var n = d.getHours();
+    var tf8 = false;
+    var tf9 = false;
+    var tf10 = false;
+    var tf11 = false;
+    var tf12 = false;
+    var tf13 = false;
+    var tf14 = false;
+    var tf15 = false;
+
+    if (today && n > 8) {
+      tf8 = true;
+      console.log('primer if ' + tf8)
+      if (fecha && n > 7 && fecha !== today) {
+        tf8 = false;
+        console.log(tf8)
+      }
+    }
+    if (today && n > 8) {
+      tf9 = true;
+      console.log('primer if ' + tf9)
+      if (fecha && n > 8 && fecha !== today) {
+        tf9 = false;
+        console.log(tf9)
+      }
+    }
+    if (today && n > 9) {
+      tf10 = true;
+      console.log('primer if ' + tf10)
+      if (fecha && n > 9 && fecha !== today) {
+        tf10 = false;
+        console.log(tf10)
+      }
+    }
+    if (today && n > 9) {
+      tf11 = true;
+      console.log('primer if ' + tf11)
+      if (fecha && n > 10 && fecha !== today) {
+        tf11 = false;
+        console.log(tf11)
+      }
+    }
+    if (today && n > 10) {
+      tf12 = true;
+      console.log('primer if ' + tf12)
+      if (fecha && n > 11 && fecha !== today) {
+        tf12 = false;
+        console.log(tf12)
+      }
+    }
+    if (today && n > 10) {
+      tf13 = true;
+      console.log('primer if ' + tf13)
+      if (fecha && n > 12 && fecha !== today) {
+        tf13 = false;
+        console.log(tf13)
+      }
+    }
+    if (today && n > 11) {
+      tf14 = true;
+      console.log('primer if ' + tf14)
+      if (fecha && n > 13 && fecha !== today) {
+        tf14 = false;
+        console.log(tf14)
+      }
+    }
+    if (today && n > 11) {
+      tf15 = true;
+      console.log('primer if ' + tf15)
+      if (fecha && n > 14 && fecha !== today) {
+        tf15 = false;
+        console.log(tf15)
+      }
+    }
+
     return (
       <div style={{width: '100%', justifyContent: 'center', display: 'flex', zIndex: '100', paddingTop: '100px'}}>
         <div style={{justifyContent: 'left', zIndex: '200'}}>
@@ -151,7 +231,7 @@ class Home extends Component {
                 * Deberás presentar copia de los docuemntos antes mencionados.
               </p>
             </div>
-            <div className="text" style={{paddingLeft: '50px'}}>
+            <div className="text2-res">
               <h5 className="title-r">Ubicación</h5>
               <p>Coordinación de Investigación y Recuperación de Vehiculos Robados Carretera México
               Pachuca km 84.5, Residencial Spauah, 42083 Pachuca de Soto, Hgo</p>
@@ -257,14 +337,14 @@ class Home extends Component {
                     </div>
                     <div className='porcent-r2'>
                       <select className="form-control-r" ref={hora => this.inputHora = hora}>
-                        <option id='hora' disabled>9:00</option>
-                        <option id='hora' disabled>9:30</option>
-                        <option id='hora' disabled>10:00</option>
-                        <option id='hora' disabled>10:30</option>
-                        <option id='hora'>11:00</option>
-                        <option id='hora'>11:30</option>
-                        <option id='hora'>12:30</option>
-                        <option id='hora'>13:00</option>
+                        <option id='hora' disabled={tf8}>9:00</option>
+                        <option id='hora' disabled={tf9}>9:30</option>
+                        <option id='hora' disabled={tf10}>10:00</option>
+                        <option id='hora' disabled={tf11}>10:30</option>
+                        <option id='hora' disabled={tf12}>11:00</option>
+                        <option id='hora' disabled={tf13}>11:30</option>
+                        <option id='hora' disabled={tf14}>12:30</option>
+                        <option id='hora' disabled={tf15}>13:00</option>
                       </select>
                     </div>
                   </div>
