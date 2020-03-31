@@ -34,7 +34,6 @@ class RowComponent extends Component {
 
     const fechaC = this.props.item.fecha;
     const horaC = this.props.item.hora;
-    const sedeC = this.props.item.municipio;
     var trans = parseInt(horaC);
     let table;
 

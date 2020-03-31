@@ -120,7 +120,7 @@ class Home extends Component {
     if (today && n > 8) {
       tf8 = true;
       console.log('primer if ' + tf8)
-      if (fecha && n > 7 && fecha !== today) {
+      if (fecha && n > 8 && fecha !== today) {
         tf8 = false;
         console.log(tf8)
       }
@@ -144,7 +144,7 @@ class Home extends Component {
     if (today && n > 9) {
       tf11 = true;
       console.log('primer if ' + tf11)
-      if (fecha && n > 10 && fecha !== today) {
+      if (fecha && n > 9 && fecha !== today) {
         tf11 = false;
         console.log(tf11)
       }
@@ -152,7 +152,7 @@ class Home extends Component {
     if (today && n > 10) {
       tf12 = true;
       console.log('primer if ' + tf12)
-      if (fecha && n > 11 && fecha !== today) {
+      if (fecha && n > 10 && fecha !== today) {
         tf12 = false;
         console.log(tf12)
       }
@@ -160,7 +160,7 @@ class Home extends Component {
     if (today && n > 10) {
       tf13 = true;
       console.log('primer if ' + tf13)
-      if (fecha && n > 12 && fecha !== today) {
+      if (fecha && n > 10 && fecha !== today) {
         tf13 = false;
         console.log(tf13)
       }
@@ -168,7 +168,7 @@ class Home extends Component {
     if (today && n > 11) {
       tf14 = true;
       console.log('primer if ' + tf14)
-      if (fecha && n > 13 && fecha !== today) {
+      if (fecha && n > 11 && fecha !== today) {
         tf14 = false;
         console.log(tf14)
       }
@@ -176,7 +176,7 @@ class Home extends Component {
     if (today && n > 11) {
       tf15 = true;
       console.log('primer if ' + tf15)
-      if (fecha && n > 14 && fecha !== today) {
+      if (fecha && n > 11 && fecha !== today) {
         tf15 = false;
         console.log(tf15)
       }
