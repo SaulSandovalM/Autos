@@ -17,15 +17,10 @@ class Home extends Component {
       fecha: '',
       hora: '',
       telefono: '',
+      agendaCita: '',
+      lista: [],
       isHidden: true,
-      agendaCita: ''
     };
-  }
-
-  toggleHidden () {
-    this.setState({
-      isHidden: !this.state.isHidden
-    })
   }
 
   showAlert(type, message) {
@@ -40,6 +35,24 @@ class Home extends Component {
 
   resetForm() {
     this.refs.contactForm.reset();
+  }
+
+  toggleHidden() {
+   this.setState({
+     isHidden: !this.state.isHidden
+   })
+ }
+
+  componentDidMount() {
+    const picker = document.getElementById('fecha');
+    picker.addEventListener('input', function(e){
+      var day = new Date(this.value).getUTCDay();
+      if([6,0].includes(day)){
+        e.preventDefault();
+        this.value = '';
+        alert('Este dia no se puede seleccionar');
+      }
+    });
   }
 
   componentWillMount() {
@@ -85,6 +98,7 @@ class Home extends Component {
         this.showAlert('danger', 'Tu solicitud no puede ser enviada');
       });
       this.resetForm();
+      this.toggleHidden();
     } else {
       this.showAlert('warning', 'Por favor llene el formulario');
     };
@@ -105,6 +119,8 @@ class Home extends Component {
     today = yyyy + '-' + mm + '-' + dd;
 
     const fecha = this.state.fecha;
+    const hora2 = this.state.lista.hora;
+    console.log(hora2);
 
     var d = new Date();
     var n = d.getHours();
@@ -261,6 +277,7 @@ class Home extends Component {
                         className="form-control-r"
                         id='nombre'
                         placeholder='Nombre(s)'
+                        required
                         ref={nombre => this.inputNombre = nombre} />
                     </div>
                   </div>
@@ -271,6 +288,7 @@ class Home extends Component {
                         className="cell-r"
                         id='apellidop'
                         placeholder='Apellido Paterno'
+                        required
                         ref={apellidop => this.inputApellidop = apellidop} />
                     </div>
                     <div className='porcent-r2'>
@@ -279,6 +297,7 @@ class Home extends Component {
                         className="cell-r"
                         id='apellidom'
                         placeholder='Apellido Materno'
+                        required
                         ref={apellidom => this.inputApellidom = apellidom} />
                     </div>
                   </div>
@@ -291,6 +310,7 @@ class Home extends Component {
                         placeholder='Placas'
                         minLength={6}
                         maxLength={7}
+                        required
                         ref={placas => this.inputPlacas = placas} />
                     </div>
                     <div className='porcent-r2'>
@@ -298,9 +318,12 @@ class Home extends Component {
                         type='number'
                         className="cell-r"
                         id='modelo'
+                        min='1'
+                        step='1'
                         placeholder='Modelo'
                         minLength={12}
                         maxLength={13}
+                        required
                         ref={modelo => this.inputModelo = modelo} />
                     </div>
                   </div>
@@ -311,6 +334,7 @@ class Home extends Component {
                         className="cell-r"
                         id='color'
                         placeholder='Color'
+                        required
                         ref={color => this.inputColor = color} />
                     </div>
                     <div className='porcent-r2'>
@@ -318,15 +342,18 @@ class Home extends Component {
                         type='number'
                         className="cell-r"
                         id='telefono'
+                        min='1'
+                        step='1'
                         minLength={10}
                         placeholder='Telefono'
+                        required
                         ref={telefono => this.inputTelefono = telefono} />
                     </div>
                   </div>
                   <div className="card-container-r2">
                     <div className='porcent-r'>
                       <input
-                        min="2020-03-23"
+                        min={today}
                         max="2020-06-31"
                         type="date"
                         className="cell-r"
@@ -336,7 +363,7 @@ class Home extends Component {
                         ref={fecha => this.inputFecha = fecha} />
                     </div>
                     <div className='porcent-r2'>
-                      <select className="form-control-r" ref={hora => this.inputHora = hora}>
+                      <select className="form-control-r" ref={hora => this.inputHora = hora} required>
                         <option id='hora' disabled={tf8}>9:00</option>
                         <option id='hora' disabled={tf9}>9:30</option>
                         <option id='hora' disabled={tf10}>10:00</option>
@@ -352,6 +379,7 @@ class Home extends Component {
                     <div className="modal-name">
                     <input
                       type='text'
+                      required
                       className="form-control-r"
                       id='marca'
                       placeholder='Marca'
@@ -369,7 +397,7 @@ class Home extends Component {
                     </div>
                   </div>
                   <div className="presentation-cta">
-                    <button type='submit' className="boton-color2" onClick={this.toggleHidden.bind(this)}>Confirmar</button>
+                    <button type='submit' className="boton-color2">Confirmar</button>
                   </div>
                   {!this.state.isHidden && <ReactToPrint
                     trigger={() => <a href="/#">Imprimie aqui tu Ticket</a>}

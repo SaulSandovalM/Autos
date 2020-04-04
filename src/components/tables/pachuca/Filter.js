@@ -18,6 +18,8 @@ class Filter extends Component {
     });
   }
 
+
+
   borrar = (agendaCita) => {
     firebaseConf.database().ref().child('/agenda-cita/')
         .set({ status: "New title"});
