@@ -6,6 +6,7 @@ import ReactToPrint from 'react-to-print';
 class Home extends Component {
   constructor(props) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       form: [],
       alert: false,
@@ -17,10 +18,12 @@ class Home extends Component {
       fecha: '',
       hora: '',
       telefono: '',
-      agendaCita: '',
-      lista: [],
       isHidden: true,
     };
+  }
+
+  handleChange(e) {
+    this.setState({fecha: e.target.value});
   }
 
   showAlert(type, message) {
@@ -107,9 +110,24 @@ class Home extends Component {
   render() {
 
     var today = new Date();
+    var h = (today.getHours());
+    var m = (today.getMinutes());
+    var s = (today.getSeconds());
+    var ms = (today.getMilliseconds());
+
+    console.log(ffolio)
+
     var dd = today.getDate();
     var mm = today.getMonth()+1;
     var yyyy = today.getFullYear();
+    var ffolio = dd + "-" + h + "-" + m + "-" + s ;
+    var fol = ffolio,
+    cosa = "-",
+    nuevo = "",
+    nuevaCadena = fol.replace(cosa, nuevo);
+    var f = nuevaCadena.replace(cosa, nuevo);
+
+
     if ( dd < 10 ){
       dd = '0' + dd
     }
@@ -119,8 +137,11 @@ class Home extends Component {
     today = yyyy + '-' + mm + '-' + dd;
 
     const fecha = this.state.fecha;
-    const hora2 = this.state.lista.hora;
-    console.log(hora2);
+    var cadena = fecha,
+    patron = "-",
+    nuevoValor = "",
+    nuevaCadena = cadena.replace(patron, nuevoValor);
+    var folio = nuevaCadena.replace(patron, nuevoValor);
 
     var d = new Date();
     var n = d.getHours();
@@ -132,6 +153,8 @@ class Home extends Component {
     var tf13 = false;
     var tf14 = false;
     var tf15 = false;
+    var tf16 = false;
+    var tf17 = false;
 
     if (today && n > 8) {
       tf8 = true;
@@ -354,16 +377,17 @@ class Home extends Component {
                     <div className='porcent-r'>
                       <input
                         min={today}
-                        max="2020-06-31"
+                        max="2020-06-26"
                         type="date"
                         className="cell-r"
                         id='fecha'
-                        placeholder='Fecha'
                         required
+                        value={fecha}
+                        onChange={this.handleChange}
                         ref={fecha => this.inputFecha = fecha} />
                     </div>
                     <div className='porcent-r2'>
-                      <select className="form-control-r" ref={hora => this.inputHora = hora} required>
+                      <select className="form-control-r" ref={hora => this.inputHora = hora}>
                         <option id='hora' disabled={tf8}>9:00</option>
                         <option id='hora' disabled={tf9}>9:30</option>
                         <option id='hora' disabled={tf10}>10:00</option>
@@ -400,13 +424,16 @@ class Home extends Component {
                     <button type='submit' className="boton-color2">Confirmar</button>
                   </div>
                   {!this.state.isHidden && <ReactToPrint
-                    trigger={() => <a href="/#">Imprimie aqui tu Ticket</a>}
+                    trigger={() => <button>Imprimie aqui tu Ticket</button>}
                     content={() => this.componentRef}
+                    onAfterPrint={this.toggleHidden.bind(this)}
                   />}
                   <div className='print-source' style={{padding: '20px'}} ref={el => (this.componentRef = el)}>
                     <div className="row-ti">
-                      <img src={'https://firebasestorage.googleapis.com/v0/b/citas-f171e.appspot.com/o/5e74eab95d5a0_1584720603_5e74eab95d53b%20(1).png?alt=media&token=08fc00ea-9814-4419-a6d0-549e03bbcb00'} alt='' className='img-cc'/>
+                      <img src={'https://seeklogo.com/images/G/gobierno-del-estado-de-hidalgo-logo-83001C1D96-seeklogo.com.png'} alt='' className='img-cc'/>
                       <div className="column-t">
+                        <p className="name-size">Folio de Atención</p>
+                        <p className="name-size3">{f}</p>
                         <p className="name-size">Cita</p>
                         <p className="name-size2">{this.state.fecha}, {this.state.hora}</p>
                       </div>
@@ -414,16 +441,17 @@ class Home extends Component {
                     <div className="column-t row-ti">
                       <div className="column-t">
                         <p className="name-size">Nombre</p>
-                        <p className="name-size2">{this.state.nombre}{this.state.apellidop}</p>
+                        <p className="name-size2">{this.state.nombre} {this.state.apellidop}</p>
                       </div>
                       <div className="column-t">
                         <p className="name-size">Ubicación</p>
-                        <p className="name-size2">Coordinación de Investigación de vehiculos</p>
+                        <p className="name-size2">Pachuca de Soto</p>
                       </div>
                       <div className="column-t">
                         <p className="name-size">Observaciones</p>
                         <p className="name-size3">
-                          Le recordamos que es obligatorio que se presente el propietario del vehículo.
+                          Le recordamos que en el caso de pagar en BBVA y Santander el pago tardara en
+                          reflejarse en un tiempo de 48 horas aproximadamente.
                         </p>
                       </div>
                     </div>
