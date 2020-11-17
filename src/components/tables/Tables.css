@@ -5,35 +5,30 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  color: grey;
-  border: none;
-  border-width: 1px;
-  border-style: solid;
 }
 .products-al-2 {
   display: flex;
   flex-direction: row;
   width: 100%;
+  border-bottom: 1px solid grey;
 }
 .col-table {
-  width: 16.6%;
+  width: 14%;
   height: 40px;
   color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-weight: bold;
-  border-left: 1px solid;
   padding-left: 10px;
 }
 .data-table {
-  width: 16.6%;
+  width: 14%;
   height: 40px;
   color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-left: 1px solid;
   padding-left: 10px;
 }
 .row-ti {

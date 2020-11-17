@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import '../Tables.css';
-import firebaseConf from '../../../Firebase';
-import ListComponent from './ListComponent';
+import React, { Component } from 'react'
+import '../Tables.css'
+import firebaseConf from '../../../Firebase'
+import ListComponent from './ListComponent'
 
-class TablePachuca extends Component {
-  constructor(){
-    super();
+export default class TablePachuca extends Component {
+  constructor () {
+    super()
     this.state = {
       nuevo: '',
       lista: [
@@ -13,14 +13,14 @@ class TablePachuca extends Component {
           id: 1,
           name: 'preuba',
           done: false
-        },
+        }
       ]
     }
   }
 
   listenForItems = (itemsRef) => {
     itemsRef.on('value', (snap) => {
-      var lista = [];
+      var lista = []
       snap.forEach((child) => {
         lista.push({
           nombre: child.val().nombre,
@@ -36,23 +36,23 @@ class TablePachuca extends Component {
           marca: child.val().marca,
           done: child.val().done,
           id: child.key
-        });
-      });
+        })
+      })
       this.setState({
         lista: lista
-      });
-    });
+      })
+    })
   }
 
-  componentDidMount() {
-    const itemsRef = firebaseConf.database().ref('agenda-cita/');
-    this.listenForItems(itemsRef);
+  componentDidMount () {
+    const itemsRef = firebaseConf.database().ref('agenda-cita/')
+    this.listenForItems(itemsRef)
   }
-
+  
   update = (item) => {
-    let updates = {};
+    let updates = {}
     updates['agenda-cita/' + item.id] = {
-      status: "Atendido",
+      status: 'Atendido',
       nombre: item.nombre,
       apellidop: item.apellidop,
       apellidom: item.apellidom,
@@ -63,20 +63,18 @@ class TablePachuca extends Component {
       fecha: item.fecha,
       hora: item.hora,
       marca: item.marca,
-    };
-    firebaseConf.database().ref().update(updates);
+    }
+    firebaseConf.database().ref().update(updates)
   }
 
-  render() {
+  render () {
     return (
-      <div className="App" style={{height: '100vh'}}>
+      <div className='App' style={{ height: '100vh' }}>
         <ListComponent
-            lista={this.state.lista}
-            update={this.update}
+          lista={this.state.lista}
+          update={this.update}
         />
       </div>
-    );
+    )
   }
 }
-
-export default TablePachuca;
