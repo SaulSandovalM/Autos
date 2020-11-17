@@ -20,7 +20,7 @@ class Login extends Component {
   handlePasswordChange = ({ target }) => {
     this.setState({ password: target.value })
   }
-
+  
   handleSubmit = () => {
     const { dispatch } = this.props
     const { email, password } = this.state
@@ -44,7 +44,7 @@ class Login extends Component {
                       <input
                         placeholder='Correo'
                         id='email'
-                        onChange={ this.handleEmailChange }
+                        onChange={this.handleEmailChange}
                         className='correo'
                       />
                     </div>
@@ -53,11 +53,11 @@ class Login extends Component {
                         placeholder='Contraseña'
                         id='password'
                         type='password'
-                        onChange={ this.handlePasswordChange }
+                        onChange={this.handlePasswordChange}
                         className='contraseña'
                       />
                     </div>
-                    { loginError && (
+                    {loginError && (
                       <p className='error-log'>
                         Correo o contraseña icorrectos
                       </p>
@@ -65,7 +65,7 @@ class Login extends Component {
                     <div className='cta2'>
                       <button
                         className='boton-lo'
-                        onClick={ this.handleSubmit }
+                        onClick={this.handleSubmit}
                       >
                         ENTRAR
                       </button>

@@ -119,10 +119,9 @@ export default class Home extends Component {
     const fecha = this.state.fecha
     const hora = this.state.hora
     let dis
-    for (var i = 0; i < dato.length; i++ ) {
+    for (var i = 0; i < dato.length; i++) {
       if (fecha === dato[i].fecha && hora === dato[i].hora) {
         dis = <p>Estas fecha ya esta reserbada</p>
-        console.log('Las Fechas no son iguales')
       } else {
         dis = <button type='submit' className='boton-color2'>Confirmar</button>
       }
@@ -337,7 +336,7 @@ export default class Home extends Component {
                       onAfterPrint={this.toggleHidden.bind(this)}
                     />
                   }
-                  <div className='print-source' style={{padding: '20px'}} ref={el => (this.componentRef = el)}>
+                  <div className='print-source' style={{ padding: '20px' }} ref={el => (this.componentRef = el)}>
                     <div className='row-ti'>
                       <img className='img-cc' src={'https://seeklogo.com/images/G/gobierno-del-estado-de-hidalgo-logo-83001C1D96-seeklogo.com.png'} alt='' />
                       <div className='column-t'>
