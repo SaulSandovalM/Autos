@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Home.css'
 import firebaseConf from '../../Firebase'
 import ReactToPrint from 'react-to-print'
+import logot from '../../assets/logo-t.png'
 
 export default class Home extends Component {
   constructor (props) {
@@ -123,17 +124,21 @@ export default class Home extends Component {
       if (fecha === dato[i].fecha && hora === dato[i].hora) {
         dis = <p>Estas fecha ya esta reserbada</p>
       } else {
-        dis = <button type='submit' className='boton-color2'>Confirmar</button>
+        dis = <button className='boton-color2' type='submit'>Confirmar</button>
       }
     }
 
     return (
-      <div style={{ width: '100%', justifyContent: 'center', display: 'flex', zIndex: '100', paddingTop: '100px' }}>
-        <div style={{ width: '65%' }}>
+      <div className='home-container'>
+        <div className='home-content'>
           <h1 className='back-title'>Constancia de Vehículo no Robado</h1>
           <div className='row'>
             <div className='text'>
-              <p>Para evitar la compra-venta de <b>vehículos robados</b> o con alteraciones en sus números de identificación.</p>
+              <p>
+                Para evitar la compra-venta de
+                <b> vehículos robados </b>
+                o con alteraciones en sus números de identificación.
+              </p>
               <h5 className='title-r'>Vehículo Nacional</h5>
               <p className='size'>
                 <b>Riquisitos</b>
@@ -190,15 +195,14 @@ export default class Home extends Component {
               <p><b>$339.00 M.N.</b></p>
             </div>
           </div>
-
-          <div style={{ width: '100%', marginBottom: '100px' }}>
+          <div className='cita-container'>
             <h1 className='back-title'>Agenda tu Cita</h1>
             <div className='row2'>
               <div className='text2'>
                 <h5 className='title-r'>Datos para Revision Vehicular</h5>
                 <form onSubmit={this.sendMessage.bind(this)} ref='contactForm'>
                   <div className='form-group-r'>
-                    <div className='modal-name'>
+                    <div>
                       <input
                         type='text'
                         className='form-control-r'
@@ -262,7 +266,8 @@ export default class Home extends Component {
                         id='color'
                         placeholder='Color'
                         required
-                        ref={color => this.inputColor = color} />
+                        ref={color => this.inputColor = color}
+                      />
                     </div>
                     <div className='porcent-r2'>
                       <input
@@ -274,7 +279,8 @@ export default class Home extends Component {
                         minLength={10}
                         placeholder='Telefono'
                         required
-                        ref={telefono => this.inputTelefono = telefono} />
+                        ref={telefono => this.inputTelefono = telefono}
+                      />
                     </div>
                   </div>
                   <div className='card-container-r2'>
@@ -285,13 +291,15 @@ export default class Home extends Component {
                         id='fecha'
                         required
                         onChange={this.handleChangef}
-                        ref={fecha => this.inputFecha = fecha} />
+                        ref={fecha => this.inputFecha = fecha}
+                      />
                     </div>
                     <div className='porcent-r2'>
                       <select
                         className='form-control-r'
                         onChange={this.handleChangeh}
-                        ref={hora => this.inputHora = hora}>
+                        ref={hora => this.inputHora = hora}
+                      >
                         <option id='hora'>9:00</option>
                         <option id='hora'>9:30</option>
                         <option id='hora'>10:00</option>
@@ -304,7 +312,7 @@ export default class Home extends Component {
                     </div>
                   </div>
                   <div className='form-group-r'>
-                    <div className='modal-name'>
+                    <div>
                       <input
                         type='text'
                         required
@@ -322,11 +330,11 @@ export default class Home extends Component {
                         className='form-control-r'
                         id='status'
                         value='en espera'
-                        ref={status => this.inputStatus = status} />
+                        ref={status => this.inputStatus = status}
+                      />
                     </div>
                   </div>
                   <div className='presentation-cta'>
-
                     {dis}
                   </div>
                   {!this.state.isHidden &&
@@ -336,28 +344,28 @@ export default class Home extends Component {
                       onAfterPrint={this.toggleHidden.bind(this)}
                     />
                   }
-                  <div className='print-source' style={{ padding: '20px' }} ref={el => (this.componentRef = el)}>
-                    <div className='row-ti'>
-                      <img className='img-cc' src={'https://seeklogo.com/images/G/gobierno-del-estado-de-hidalgo-logo-83001C1D96-seeklogo.com.png'} alt='' />
-                      <div className='column-t'>
-                        <p className='name-size'>Folio de Atención</p>
-                        <p className='name-size3'>w9oer78y19487t</p>
-                        <p className='name-size'>Cita</p>
-                        <p className='name-size2'>{this.state.fecha}, {this.state.hora}</p>
+                  <div className='print-source' ref={el => (this.componentRef = el)}>
+                    <div className='row-h'>
+                      <img className='img-ht' src={logot} alt='' />
+                      <div className='column-th'>
+                        <p className='name-size-h'>Folio de Atención</p>
+                        <p className='name-size3-h'>w9oer78y19487t</p>
+                        <p className='name-size-h'>Cita</p>
+                        <p className='name-size2-h'>{this.state.fecha}, {this.state.hora}</p>
                       </div>
                     </div>
-                    <div className='column-t row-ti'>
-                      <div className='column-t'>
-                        <p className='name-size'>Nombre</p>
-                        <p className='name-size2'>{this.state.nombre} {this.state.apellidop}</p>
+                    <div className='column-th row-ti-h'>
+                      <div className='column-th'>
+                        <p className='name-size-h'>Nombre</p>
+                        <p className='name-size2-h'>{this.state.nombre} {this.state.apellidop}</p>
                       </div>
-                      <div className='column-t'>
-                        <p className='name-size'>Ubicación</p>
-                        <p className='name-size2'>Pachuca de Soto</p>
+                      <div className='column-th'>
+                        <p className='name-size-h'>Ubicación</p>
+                        <p className='name-size2-h'>Pachuca de Soto</p>
                       </div>
-                      <div className='column-t'>
-                        <p className='name-size'>Observaciones</p>
-                        <p className='name-size3'>
+                      <div className='column-th'>
+                        <p className='name-size-h'>Observaciones</p>
+                        <p className='name-size3-h'>
                           Le recordamos que en el caso de pagar en BBVA y Santander
                           el pago tardara en reflejarse en un tiempo de 48 horas aproximadamente.
                         </p>

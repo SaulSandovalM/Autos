@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import '../Tables.css'
+import './Tables.css'
 import RowComponent from './RowComponent'
-import firebaseConf from '../../../Firebase'
-// import { Link } from 'react-router-dom'
+import firebaseConf from '../../Firebase'
 
 export default class ListComponent extends Component {
   constructor (props) {
@@ -22,11 +21,8 @@ export default class ListComponent extends Component {
 
   render () {
     return (
-      <div className='App' style={{ height: '100vh' }}>
+      <div className='App'>
         <h1>Citas</h1>
-        {/* <Link to='/Filter' style={{ textDecoration: 'none' }}>
-          <p>Buscar por Folio</p>
-        </Link> */}
         <div className='products-al-2'>
           <div className='col-table'>Nombre</div>
           <div className='col-table'>Placas</div>

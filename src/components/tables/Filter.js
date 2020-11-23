@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../Tables.css'
+import './Tables.css'
 import firebaseConf from '../../../Firebase'
 
 export default class Filter extends Component {

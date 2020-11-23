@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import '../Tables.css'
-import firebaseConf from '../../../Firebase'
+import './Tables.css'
+import firebaseConf from '../../Firebase'
 import ListComponent from './ListComponent'
 
 export default class TablePachuca extends Component {
@@ -48,7 +48,7 @@ export default class TablePachuca extends Component {
     const itemsRef = firebaseConf.database().ref('agenda-cita/')
     this.listenForItems(itemsRef)
   }
-  
+
   update = (item) => {
     let updates = {}
     updates['agenda-cita/' + item.id] = {
@@ -69,7 +69,7 @@ export default class TablePachuca extends Component {
 
   render () {
     return (
-      <div className='App' style={{ height: '100vh' }}>
+      <div className='App'>
         <ListComponent
           lista={this.state.lista}
           update={this.update}

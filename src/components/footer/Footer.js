@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import './Footer.css'
+import logof from '../../assets/logof.png'
+import escudo from '../../assets/escudo.svg'
 
 export default class Footer extends Component {
   render () {
@@ -7,18 +9,18 @@ export default class Footer extends Component {
       <div className='footer-container'>
         <div className='legal'>
           <div className='img-f'>
-            <img className='imgH' src={'https://cdn.hidalgo.gob.mx/logo_hgo_2019.png'} alt='' />
+            <img className='imgH' src={logof} alt='' />
           </div>
-          <div className='legal' style={{ width: '33.3%', justifyContent: 'center', paddingTop: '55px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <img className='imgH2' src={'http://cdn.hidalgo.gob.mx/escudo_blanco.svg'} alt='' />
+          <div className='legal2'>
+            <div className='img-container'>
+              <div className='img-content'>
+                <img className='imgH2' src={escudo} alt='' />
               </div>
-              <p style={{ height: '0px', margin: '0', color: '#fff' }}>© 2019 Gobierno del Estado de Hidalgo</p>
+              <p className='p-f'>© 2019 Gobierno del Estado de Hidalgo</p>
             </div>
           </div>
           <div className='img-f'>
-            <p style={{ display: 'flex', justifyContent: 'center' }}>
+            <p className='img-content'>
               Contacto <br />
               Carretera México – Pachuca Km 84.5, Centro Cívico
               <br />

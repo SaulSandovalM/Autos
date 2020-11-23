@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../Tables.css'
+import './Tables.css'
 
 export default class RowComponent extends Component {
   constructor (props) {
@@ -10,9 +10,9 @@ export default class RowComponent extends Component {
     }
   }
 
-   update = () => {
-     this.props.update(this.props.item)
-   }
+  update = () => {
+    this.props.update(this.props.item)
+  }
 
   render () {
     var today = new Date()
