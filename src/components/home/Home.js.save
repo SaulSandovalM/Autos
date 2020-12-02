@@ -246,9 +246,14 @@ export default class Home extends Component {
                     </div>
                     <div className='porcent-r2'>
                       <input
+                        type='number'
                         className='cell-r'
                         id='modelo'
+                        min='1'
+                        step='1'
                         placeholder='Modelo'
+                        minLength={12}
+                        maxLength={13}
                         required
                         ref={modelo => this.inputModelo = modelo} />
                     </div>
@@ -343,6 +348,8 @@ export default class Home extends Component {
                     <div className='row-h'>
                       <img className='img-ht' src={logot} alt='' />
                       <div className='column-th'>
+                        <p className='name-size-h'>Folio de Atención</p>
+                        <p className='name-size3-h'>w9oer78y19487t</p>
                         <p className='name-size-h'>Cita</p>
                         <p className='name-size2-h'>{this.state.fecha}, {this.state.hora}</p>
                       </div>
