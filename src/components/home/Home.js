@@ -354,7 +354,7 @@ export default class Home extends Component {
                       </div>
                       <div className='column-th'>
                         <p className='name-size-h'>Ubicación</p>
-                        <p className='name-size2-h'>Pachuca de Soto</p>
+                        <p className='name-size2-h'>Coordinación de Investigación y Recuperación de Vehiculos Robados Carretera México Pachuca km 84.5, Residencial Spauah, 42083 Pachuca de Soto, Hgo</p>
                       </div>
                       <div className='column-th'>
                         <p className='name-size-h'>Observaciones</p>
