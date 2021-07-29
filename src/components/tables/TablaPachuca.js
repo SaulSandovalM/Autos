@@ -26,15 +26,16 @@ export default class TablePachuca extends Component {
           nombre: child.val().nombre,
           apellidop: child.val().apellidop,
           apellidom: child.val().apellidom,
-          placas: child.val().placas,
           modelo: child.val().modelo,
+          marca: child.val().marca,
           color: child.val().color,
+          placas: child.val().placas,
           telefono: child.val().telefono,
+          email: child.val().email,
           fecha: child.val().fecha,
           hora: child.val().hora,
+          folio: child.val().folio,
           status: child.val().status,
-          marca: child.val().marca,
-          done: child.val().done,
           id: child.key
         })
       })
@@ -56,13 +57,15 @@ export default class TablePachuca extends Component {
       nombre: item.nombre,
       apellidop: item.apellidop,
       apellidom: item.apellidom,
-      placas: item.placas,
       modelo: item.modelo,
+      marca: item.marca,
       color: item.color,
+      placas: item.placas,
       telefono: item.telefono,
+      email: item.email,
       fecha: item.fecha,
       hora: item.hora,
-      marca: item.marca,
+      folio: item.folio
     }
     firebaseConf.database().ref().update(updates)
   }

@@ -15,12 +15,13 @@ export default class Home extends Component {
       alertData: {},
       nombre: '',
       apellidop: '',
-      apellidom: '',
+      apellidom: ' ',
       marca: '',
       fecha: '',
       hora: '',
       telefono: '',
       isHidden: true,
+      numfolio: '',
       lista: [
         {
           id: 1,
@@ -52,14 +53,13 @@ export default class Home extends Component {
   componentDidMount () {
     const itemsRef = firebaseConf.database().ref('agenda-cita/')
     this.listenForItems(itemsRef)
-  }
-
-  componentWillMount () {
-    const formRef = firebaseConf.database().ref('agenda-cita').orderByKey().limitToLast(6)
-    formRef.on('child_added', snapshot => {
-      const { nombre, apellidop, apellidom, placas, modelo, color, fecha, hora, marca, status, telefono } = snapshot.val()
-      const data = { nombre, apellidop, apellidom, placas, modelo, color, fecha, hora, marca, status, telefono }
-      this.setState({ form: [data].concat(this.state.form) })
+    var wishRef = firebaseConf.database().ref('folio/3q4t5w63q4fw3563')
+    wishRef.on('value', (snapshot) => {
+      let updatedWish = snapshot.val()
+      this.setState({
+        numfolio: updatedWish.numfolio
+      })
+      wishRef.set(updatedWish)
     })
   }
 
@@ -78,20 +78,34 @@ export default class Home extends Component {
     })
   }
 
+  incrementFolio = () => {
+    const wishRef = firebaseConf.database().ref('folio/3q4t5w63q4fw3563')
+    wishRef.once('value').then(snapshot => {
+      let updatedWish = snapshot.val()
+      this.setState({
+        numfolio: updatedWish.numfolio
+      })
+      updatedWish.numfolio = updatedWish.numfolio + 1
+      wishRef.set(updatedWish)
+    })
+  }
+
   sendMessage (e) {
     e.preventDefault()
     const params = {
       nombre: this.inputNombre.value,
       apellidop: this.inputApellidop.value,
       apellidom: this.inputApellidom.value,
-      placas: this.inputPlacas.value,
       modelo: this.inputModelo.value,
+      marca: this.inputMarca.value,
       color: this.inputColor.value,
+      placas: this.inputPlacas.value,
+      telefono: this.inputTelefono.value,
+      email: this.inputEmail.value,
       fecha: this.inputFecha.value,
       hora: this.inputHora.value,
-      marca: this.inputMarca.value,
-      status: this.inputStatus.value,
-      telefono: this.inputTelefono.value
+      folio: this.inputFolio.value,
+      status: this.inputStatus.value
     }
     this.setState({
       nombre: this.inputNombre.value,
@@ -102,14 +116,14 @@ export default class Home extends Component {
     })
     if (params.nombre && params.apellidop && params.apellidom && params.placas &&
       params.modelo && params.color && params.fecha && params.hora && params.marca &&
-      params.status && params.telefono) {
+      params.status && params.telefono && params.marca && params.email && params.folio) {
       firebaseConf.database().ref('agenda-cita').push(params).then(() => {
-        alert('Tu solicitud fue enviada, no olvides realizar tu pago antes de ir a tu cita.')
+        alert('Tu solicitud fue enviada.')
       }).catch(() => {
         alert('Tu solicitud no puede ser enviada')
       })
+      this.incrementFolio()
       this.resetForm()
-      this.toggleHidden()
     } else {
       alert('Por favor llene el formulario')
     }
@@ -119,84 +133,38 @@ export default class Home extends Component {
     const dato = this.state.lista
     const fecha = this.state.fecha
     const hora = this.state.hora
+    var indice2 = []
+    dato.map(item =>
+      item.hora === hora && item.fecha === fecha &&
+        indice2.push(item)
+    )
+    console.log(this.state.numfolio)
+
     let dis
     for (var i = 0; i < dato.length; i++) {
-      if (fecha === dato[i].fecha && hora === dato[i].hora) {
-        dis = <p>Estas fecha ya esta reserbada</p>
+      if (indice2.length >= 1) {
+        dis = <p>Se acabaron las citas para estos parametros</p>
       } else {
-        dis = <button className='boton-color2' type='submit'>Confirmar</button>
+        dis =
+          <ReactToPrint
+            trigger={() => <button className='boton-color2'>Confirmar</button>}
+            content={() => this.componentRef}
+            onAfterPrint={this.toggleHidden.bind(this)}
+            onBeforePrint={this.toggleHidden.bind(this)}
+          />
       }
     }
+
+    var f = new Date(this.state.fecha)
+    var today = new Date()
+    var meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+    today = f.getDate() + 1 + '-' + meses[f.getMonth()] + '-' + f.getFullYear()
 
     return (
       <div className='home-container'>
         <div className='home-content'>
-          <h1 className='back-title'>Constancia de Vehículo no Robado</h1>
-          <div className='row'>
-            <div className='text'>
-              <p>
-                Para evitar la compra-venta de
-                <b> vehículos robados </b>
-                o con alteraciones en sus números de identificación.
-              </p>
-              <h5 className='title-r'>Vehículo Nacional</h5>
-              <p className='size'>
-                <b>Riquisitos</b>
-                <br /><br />
-                1.- Indispensable presentar el vehículo.
-                <br />
-                2.- Factura original, endosada o en defecto contrato de compra-venta o carta responsiva.
-                <br />
-                3.- Tarjeta de circulación o baja de placas.
-                <br />
-                4.- Identificación oficial.
-                <br />
-                5.- CURP.
-                <br /><br />
-                * Deberás presentar copia de los docuemntos antes mencionados.
-                <br /><br />
-                <h5 className='title-r'>Vehículo Extranjero</h5>
-                <b>Riquisitos</b>
-                <br /><br />
-                1.- Indispensable presentar el vehículo.
-                <br />
-                2.- Titulo de propiedad y/o Certificado de propiedad debidamente endosado.
-                <br />
-                3.- Tarjeta de circulación.
-                <br />
-                4.- Pedimento de Importacióon y/o Constancia de Inscripción.
-                <br />
-                5.- Credencial de elector.
-                <br />
-                6.- CURP.
-                <br />
-                <br />
-                * Deberás presentar copia de los docuemntos antes mencionados.
-              </p>
-            </div>
-            <div className='text2-res'>
-              <h5 className='title-r'>Ubicación</h5>
-              <p>
-                Coordinación de Investigación y Recuperación de Vehiculos Robados
-                Carretera México Pachuca km 84.5, Residencial Spauah, 42083
-                Pachuca de Soto, Hgo
-              </p>
-              <a href='https://www.google.com.mx/maps/place/Coordinaci%C3%B3n+de+Investigaci%C3%B3n+y+Recuperaci%C3%B3n+de+Veh%C3%ADculos+Robados/@20.0641759,-98.7839683,18.25z/data=!4m5!3m4!1s0x85d1a0fd90dbd9df:0xcf5d49e41985ff46!8m2!3d20.0654064!4d-98.7847576'>Abrir ubicación Google Maps</a>
-              <h5 className='title-r'>Contactate con nosotros</h5>
-              <p>
-                Para mas informacion favor de llamar al numero:
-                <br />01 (771) 710 8813
-                <br />01 (771) 710 8796
-              </p>
-              <h5 className='title-r'>Horario</h5>
-              <p>lunes a viernes | 9 a 14 horas</p>
-              <br />
-              <h5 className='title-r'>Costo de la constancia</h5>
-              <p><b>$339.00 M.N.</b></p>
-            </div>
-          </div>
           <div className='cita-container'>
-            <h1 className='back-title'>Agenda tu Cita</h1>
+            <h1 className='back-title'>Agenda tu Cita para el Tramite de Constancia de Vehiculo no Robado</h1>
             <div className='row2'>
               <div className='text2'>
                 <h5 className='title-r'>Datos para Revision Vehicular</h5>
@@ -228,7 +196,6 @@ export default class Home extends Component {
                         className='cell-r'
                         id='apellidom'
                         placeholder='Apellido Materno'
-                        required
                         ref={apellidom => this.inputApellidom = apellidom} />
                     </div>
                   </div>
@@ -237,12 +204,11 @@ export default class Home extends Component {
                       <input
                         type='text'
                         className='cell-r'
-                        id='placas'
-                        placeholder='Placas'
-                        minLength={6}
-                        maxLength={7}
+                        id='Marca'
+                        placeholder='Marca'
                         required
-                        ref={placas => this.inputPlacas = placas} />
+                        ref={Marca => this.inputMarca = Marca} />
+
                     </div>
                     <div className='porcent-r2'>
                       <input
@@ -266,6 +232,18 @@ export default class Home extends Component {
                     </div>
                     <div className='porcent-r2'>
                       <input
+                        type='text'
+                        className='cell-r'
+                        id='placas'
+                        placeholder='Placas'
+                        required
+                        ref={placas => this.inputPlacas = placas}
+                      />
+                    </div>
+                  </div>
+                  <div className='card-container-r2'>
+                    <div className='porcent-r'>
+                      <input
                         type='number'
                         className='cell-r'
                         id='telefono'
@@ -275,6 +253,16 @@ export default class Home extends Component {
                         placeholder='Telefono'
                         required
                         ref={telefono => this.inputTelefono = telefono}
+                     />
+                    </div>
+                    <div className='porcent-r2'>
+                      <input
+                        type='text'
+                        className='cell-r'
+                        id='email'
+                        placeholder='Correo'
+                        required
+                        ref={email => this.inputEmail = email}
                       />
                     </div>
                   </div>
@@ -295,6 +283,7 @@ export default class Home extends Component {
                         onChange={this.handleChangeh}
                         ref={hora => this.inputHora = hora}
                       >
+                        <option id='hora'></option>
                         <option id='hora'>9:00</option>
                         <option id='hora'>9:30</option>
                         <option id='hora'>10:00</option>
@@ -312,9 +301,9 @@ export default class Home extends Component {
                         type='text'
                         required
                         className='form-control-r'
-                        id='marca'
-                        placeholder='Marca'
-                        ref={marca => this.inputMarca = marca}
+                        id='folio'
+                        placeholder='Folio'
+                        ref={folio => this.inputFolio = folio}
                       />
                     </div>
                   </div>
@@ -342,9 +331,15 @@ export default class Home extends Component {
                   <div className='print-source' ref={el => (this.componentRef = el)}>
                     <div className='row-h'>
                       <img className='img-ht' src={logot} alt='' />
-                      <div className='column-th'>
-                        <p className='name-size-h'>Cita</p>
-                        <p className='name-size2-h'>{this.state.fecha}, {this.state.hora}</p>
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div className='column-th'>
+                          <p className='name-size-h'>Folio</p>
+                          <p className='name-size2-h'>CIRVR-CVNR-{this.state.numfolio}-21</p>
+                        </div>
+                        <div className='column-th'>
+                          <p className='name-size-h'>Cita</p>
+                          <p className='name-size2-h'>{today} - {this.state.hora}</p>
+                        </div>
                       </div>
                     </div>
                     <div className='column-th row-ti-h'>

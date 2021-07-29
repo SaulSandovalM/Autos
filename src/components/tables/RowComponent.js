@@ -26,13 +26,9 @@ export default class RowComponent extends Component {
       mm = '0' + mm
     }
     today = yyyy + '-' + mm + '-' + dd
-    var d = new Date()
-    var n = d.getHours()
     const fechaC = this.props.item.fecha
-    const horaC = this.props.item.hora
-    var trans = parseInt(horaC)
     let table
-    if (fechaC === today && trans >= n) {
+    if (fechaC === today) {
       table =
         <div className='products-al-2'>
           <div className='data-table'>{this.props.item.nombre} {this.props.item.apellidop} {this.props.item.apellidom}</div>
