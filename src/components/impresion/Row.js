@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './Tables.css'
-import Popup from 'reactjs-popup'
 
 export default class Row extends Component {
   constructor (props) {
