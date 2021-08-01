@@ -70,12 +70,54 @@ export default class TablePachuca extends Component {
     firebaseConf.database().ref().update(updates)
   }
 
+  reagendar = (item, fecha, hora) => {
+    let updates = {}
+    updates['agenda-cita/' + item.id] = {
+      status: 'en espera',
+      nombre: item.nombre,
+      apellidop: item.apellidop,
+      apellidom: item.apellidom,
+      modelo: item.modelo,
+      marca: item.marca,
+      color: item.color,
+      placas: item.placas,
+      telefono: item.telefono,
+      email: item.email,
+      fecha: fecha,
+      hora: hora,
+      folio: item.folio
+    }
+    firebaseConf.database().ref().update(updates)
+  }
+
+  cancelar = (item) => {
+    let updates = {}
+    updates['agenda-cita/' + item.id] = {
+      status: 'Cancelado',
+      nombre: item.nombre,
+      apellidop: item.apellidop,
+      apellidom: item.apellidom,
+      modelo: item.modelo,
+      marca: item.marca,
+      color: item.color,
+      placas: item.placas,
+      telefono: item.telefono,
+      email: item.email,
+      fecha: item.fecha,
+      hora: item.hora,
+      folio: item.folio
+    }
+    firebaseConf.database().ref().update(updates)
+  }
+
   render () {
     return (
       <div className='App'>
         <ListComponent
           lista={this.state.lista}
           update={this.update}
+          reagendar={this.reagendar}
+          cancelar={this.cancelar}
         />
       </div>
     )

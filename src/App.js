@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import ProtectedRoute from './ProtectedRoute'
 import Login from './components/login/Login'
 import TablaPachuca from './components/tables/TablaPachuca'
+import Table from './components/impresion/Table'
 import Home from './components/home/Home'
 
 function App (props) {
@@ -15,6 +16,13 @@ function App (props) {
         exact
         path='/Citas'
         component={TablaPachuca}
+        isAuthenticated={isAuthenticated}
+        isVerifying={isVerifying}
+      />
+      <ProtectedRoute
+        exact
+        path='/CitasImpresion'
+        component={Table}
         isAuthenticated={isAuthenticated}
         isVerifying={isVerifying}
       />

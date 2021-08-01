@@ -3,6 +3,9 @@ import './Home.css'
 import firebaseConf from '../../Firebase'
 import ReactToPrint from 'react-to-print'
 import logot from '../../assets/logo-t.png'
+import medidas1 from '../../assets/medidas1.png'
+import medidas2 from '../../assets/medidas2.png'
+import medidas3 from '../../assets/medidas3.png'
 
 export default class Home extends Component {
   constructor (props) {
@@ -22,6 +25,7 @@ export default class Home extends Component {
       telefono: '',
       isHidden: true,
       numfolio: '',
+      noExp: '',
       lista: [
         {
           id: 1,
@@ -95,7 +99,7 @@ export default class Home extends Component {
     const params = {
       nombre: this.inputNombre.value,
       apellidop: this.inputApellidop.value,
-      apellidom: this.inputApellidom.value,
+      apellidom: this.inputApellidom.value ? this.inputApellidom.value : ' ',
       modelo: this.inputModelo.value,
       marca: this.inputMarca.value,
       color: this.inputColor.value,
@@ -104,24 +108,27 @@ export default class Home extends Component {
       email: this.inputEmail.value,
       fecha: this.inputFecha.value,
       hora: this.inputHora.value,
-      folio: this.inputFolio.value,
-      status: this.inputStatus.value
+      folio: this.inputFolio.value ? this.inputFolio.value : ' ',
+      status: this.inputStatus.value,
+      noExp: this.inputExp.value
     }
     this.setState({
-      nombre: this.inputNombre.value,
-      apellidop: this.inputApellidop.value,
-      apellidom: this.inputApellidom.value,
-      fecha: this.inputFecha.value,
-      hora: this.inputHora.value
+      nombre: '',
+      apellidop: '',
+      apellidom: '',
+      fecha: '',
+      hora: '',
+      noExp: ''
     })
     if (params.nombre && params.apellidop && params.apellidom && params.placas &&
       params.modelo && params.color && params.fecha && params.hora && params.marca &&
-      params.status && params.telefono && params.marca && params.email && params.folio) {
+      params.status && params.telefono && params.marca && params.email && params.folio && params.noExp) {
       firebaseConf.database().ref('agenda-cita').push(params).then(() => {
         alert('Tu solicitud fue enviada.')
       }).catch(() => {
         alert('Tu solicitud no puede ser enviada')
       })
+      this.toggleHidden()
       this.incrementFolio()
       this.resetForm()
     } else {
@@ -138,20 +145,13 @@ export default class Home extends Component {
       item.hora === hora && item.fecha === fecha &&
         indice2.push(item)
     )
-    console.log(this.state.numfolio)
 
     let dis
     for (var i = 0; i < dato.length; i++) {
       if (indice2.length >= 1) {
         dis = <p>Se acabaron las citas para estos parametros</p>
       } else {
-        dis =
-          <ReactToPrint
-            trigger={() => <button className='boton-color2'>Confirmar</button>}
-            content={() => this.componentRef}
-            onAfterPrint={this.toggleHidden.bind(this)}
-            onBeforePrint={this.toggleHidden.bind(this)}
-          />
+        dis = <button type='submit' className='boton-color2'>Confirmar</button>
       }
     }
 
@@ -159,6 +159,10 @@ export default class Home extends Component {
     var today = new Date()
     var meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
     today = f.getDate() + 1 + '-' + meses[f.getMonth()] + '-' + f.getFullYear()
+    var currentDate = new Date()
+    var futureBlockDate = new Date()
+    futureBlockDate.setDate(currentDate.getDate() + 30)
+
 
     return (
       <div className='home-container'>
@@ -275,6 +279,7 @@ export default class Home extends Component {
                         required
                         onChange={this.handleChangef}
                         ref={fecha => this.inputFecha = fecha}
+                        min='2021-08-30'
                       />
                     </div>
                     <div className='porcent-r2'>
@@ -299,11 +304,21 @@ export default class Home extends Component {
                     <div>
                       <input
                         type='text'
-                        required
                         className='form-control-r'
                         id='folio'
-                        placeholder='Folio'
+                        placeholder='En caso de contar con folio favor de agregarlo'
                         ref={folio => this.inputFolio = folio}
+                      />
+                    </div>
+                  </div>
+                  <div className='form-group-r'>
+                    <div>
+                      <input
+                        type='text'
+                        className='form-control-r'
+                        id='noExp'
+                        placeholder='En caso de contar con numero de expediente favor de agregarlo'
+                        ref={noExp => this.inputExp = noExp}
                       />
                     </div>
                   </div>
@@ -358,6 +373,11 @@ export default class Home extends Component {
                           el pago tardara en reflejarse en un tiempo de 48 horas aproximadamente.
                         </p>
                       </div>
+                    </div>
+                    <div>
+                      <img style={{ height: '100vh', width: '100%' }} src={medidas1} alt='' />
+                      <img style={{ height: '100vh', width: '100%' }} src={medidas2} alt='' />
+                      <img style={{ height: '100vh', width: '100%' }} src={medidas3} alt='' />
                     </div>
                   </div>
                 </form>
